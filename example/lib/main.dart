@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_place_picker/google_maps_place_picker.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-// Your api key storage.
-import 'keys.dart';
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -12,7 +9,7 @@ class MyApp extends StatelessWidget {
   final ThemeData lightTheme = ThemeData.light().copyWith(
     // Background color of the FloatingCard
     cardColor: Colors.white,
-    buttonTheme: ButtonThemeData(
+    buttonTheme: const ButtonThemeData(
       // Select here's button color
       buttonColor: Colors.black,
       textTheme: ButtonTextTheme.primary,
@@ -23,12 +20,14 @@ class MyApp extends StatelessWidget {
   final ThemeData darkTheme = ThemeData.dark().copyWith(
     // Background color of the FloatingCard
     cardColor: Colors.grey,
-    buttonTheme: ButtonThemeData(
+    buttonTheme: const ButtonThemeData(
       // Select here's button color
       buttonColor: Colors.yellow,
       textTheme: ButtonTextTheme.primary,
     ),
   );
+
+  MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -38,29 +37,29 @@ class MyApp extends StatelessWidget {
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.light,
-      home: HomePage(),
+      home: const HomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key key}) : super(key: key);
-
-  static final kInitialPosition = LatLng(-33.8567844, 151.213108);
+  const HomePage({super.key});
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  PickResult selectedPlace;
+  PickResult? selectedPlace;
+
+  static const kInitialPosition = LatLng(-33.8567844, 151.213108);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Google Map Place Picer Demo"),
+          title: const Text("Google Map Place Picer Demo"),
         ),
         body: Center(
           child: Column(
@@ -68,15 +67,15 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               ElevatedButton(
-                child: Text("Load Google Map"),
+                child: const Text("Load Google Map"),
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) {
                         return PlacePicker(
-                          apiKey: APIKeys.apiKey,
-                          initialPosition: HomePage.kInitialPosition,
+                          apiKey: 'YOUR KEY HERE',
+                          initialPosition: kInitialPosition,
                           useCurrentLocation: true,
                           selectInitialPosition: true,
 
@@ -127,7 +126,9 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              selectedPlace == null ? Container() : Text(selectedPlace.formattedAddress ?? ""),
+              selectedPlace == null
+                  ? Container()
+                  : Text(selectedPlace!.formattedAddress ?? ""),
             ],
           ),
         ));
