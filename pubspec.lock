@@ -208,14 +208,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.10"
-  google_maps_webservice:
+  googlemaps_flutter_webservices:
     dependency: "direct main"
     description:
-      name: google_maps_webservice
-      sha256: d0ae4e4508afd74a3f051565261a3cdbae59db29448f9b6e6beb5674545e1eb7
+      name: googlemaps_flutter_webservices
+      sha256: f69df5ac00ea5f9312011deb90a5939f4182f3d2953c4344bf1e87a5326b644a
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.20-nullsafety.5"
+    version: "1.0.2"
   html:
     dependency: transitive
     description:
@@ -228,10 +228,10 @@ packages:
     dependency: "direct main"
     description:
       name: http
-      sha256: "5895291c13fa8a3bd82e76d5627f69e0d85ca6a30dcac95c4ea19a5d555879c2"
+      sha256: b9c29a161230ee03d3ccf545097fccd9b87a5264228c5d348202e0f0c28f9010
       url: "https://pub.dev"
     source: hosted
-    version: "0.13.6"
+    version: "1.2.2"
   http_parser:
     dependency: transitive
     description:

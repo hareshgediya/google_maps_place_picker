@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_webservice/places.dart';
+import 'package:googlemaps_flutter_webservices/places.dart';
 
 class PredictionTile extends StatelessWidget {
   final Prediction prediction;
@@ -34,10 +34,8 @@ class PredictionTile extends StatelessWidget {
       if (matchedSubString.offset > 0) {
         result.add(
           TextSpan(
-            text: prediction.description
-                ?.substring(0, matchedSubString.offset as int?),
-            style: TextStyle(
-                color: textColor, fontSize: 16, fontWeight: FontWeight.w300),
+            text: prediction.description?.substring(0, matchedSubString.offset as int?),
+            style: TextStyle(color: textColor, fontSize: 16, fontWeight: FontWeight.w300),
           ),
         );
       }
@@ -45,11 +43,9 @@ class PredictionTile extends StatelessWidget {
       // Matched strings.
       result.add(
         TextSpan(
-          text: prediction.description?.substring(
-              matchedSubString.offset as int,
+          text: prediction.description?.substring(matchedSubString.offset as int,
               matchedSubString.offset + matchedSubString.length as int?),
-          style: TextStyle(
-              color: textColor, fontSize: 16, fontWeight: FontWeight.w500),
+          style: TextStyle(color: textColor, fontSize: 16, fontWeight: FontWeight.w500),
         ),
       );
 
@@ -58,10 +54,9 @@ class PredictionTile extends StatelessWidget {
           (prediction.description?.length ?? 0)) {
         result.add(
           TextSpan(
-            text: prediction.description?.substring(
-                matchedSubString.offset + matchedSubString.length as int),
-            style: TextStyle(
-                color: textColor, fontSize: 16, fontWeight: FontWeight.w300),
+            text: prediction.description
+                ?.substring(matchedSubString.offset + matchedSubString.length as int),
+            style: TextStyle(color: textColor, fontSize: 16, fontWeight: FontWeight.w300),
           ),
         );
       }
@@ -70,8 +65,7 @@ class PredictionTile extends StatelessWidget {
       result.add(
         TextSpan(
           text: prediction.description,
-          style: TextStyle(
-              color: textColor, fontSize: 16, fontWeight: FontWeight.w300),
+          style: TextStyle(color: textColor, fontSize: 16, fontWeight: FontWeight.w300),
         ),
       );
     }
