@@ -10,7 +10,7 @@ import 'package:google_maps_place_picker/src/autocomplete_search.dart';
 import 'package:google_maps_place_picker/src/controllers/autocomplete_search_controller.dart';
 import 'package:google_maps_place_picker/src/google_map_place_picker.dart';
 import 'package:google_maps_place_picker/src/utils/uuid.dart';
-import 'package:google_maps_webservice/places.dart';
+import 'package:google_maps_webservice2/places.dart';
 import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import 'dart:io' show Platform;

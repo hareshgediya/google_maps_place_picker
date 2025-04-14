@@ -6,7 +6,7 @@ import 'package:google_maps_place_picker/providers/place_provider.dart';
 import 'package:google_maps_place_picker/providers/search_provider.dart';
 import 'package:google_maps_place_picker/src/components/prediction_tile.dart';
 import 'package:google_maps_place_picker/src/controllers/autocomplete_search_controller.dart';
-import 'package:google_maps_webservice/places.dart';
+import 'package:google_maps_webservice2/places.dart';
 import 'package:provider/provider.dart';
 
 class AutoCompleteSearch extends StatefulWidget {
