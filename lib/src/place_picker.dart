@@ -16,6 +16,7 @@ import 'package:provider/provider.dart';
 import 'dart:io' show Platform;
 
 enum PinState { Preparing, Idle, Dragging }
+
 enum SearchingState { Idle, Searching }
 
 class PlacePicker extends StatefulWidget {
@@ -207,10 +208,12 @@ class _PlacePickerState extends State<PlacePicker> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () {
-        searchBarController.clearOverlay();
-        return Future.value(true);
+    return PopScope(
+      canPop: true,
+      onPopInvokedWithResult: (didPop, _) {
+        if (didPop) {
+          searchBarController.clearOverlay();
+        }
       },
       child: FutureBuilder<PlaceProvider>(
         future: _futureProvider,
@@ -245,7 +248,7 @@ class _PlacePickerState extends State<PlacePicker> {
             children.addAll([
               Icon(
                 Icons.error_outline,
-                color: Theme.of(context).errorColor,
+                color: Theme.of(context).colorScheme.error,
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 16),
@@ -334,7 +337,8 @@ class _PlacePickerState extends State<PlacePicker> {
     // Prevents searching again by camera movement.
     provider!.isAutoCompleteSearching = true;
 
-    await _moveTo(provider!.selectedPlace!.geometry!.location.lat, provider!.selectedPlace!.geometry!.location.lng);
+    await _moveTo(provider!.selectedPlace!.geometry!.location.lat,
+        provider!.selectedPlace!.geometry!.location.lng);
 
     provider!.placeSearchingState = SearchingState.Idle;
   }
@@ -370,7 +374,8 @@ class _PlacePickerState extends State<PlacePicker> {
               if (provider!.currentPosition == null) {
                 return _buildMap(widget.initialPosition);
               } else {
-                return _buildMap(LatLng(provider!.currentPosition!.latitude, provider!.currentPosition!.longitude));
+                return _buildMap(LatLng(
+                    provider!.currentPosition!.latitude, provider!.currentPosition!.longitude));
               }
             }
           });
